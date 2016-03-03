@@ -20,6 +20,7 @@ body {
     height: 100%;
   }
   .block {
+    font-size: medium;
     list-style-type: none;
     display: inline-block;
     width: 33.333333%;
@@ -28,8 +29,15 @@ body {
       position: relative;
       width: 100%;
       height: 100%;
-      & > .content {
+      & > .content-fullsize {
         display: none;
+      }
+      & > .content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
       }
     }
   }
@@ -45,8 +53,7 @@ body {
     & > div {
       width: 100%;
       height: 100%;
-      & > .content {
-        font-size: medium;
+      & > .content-fullsize {
         position: absolute;
         top: 0;
         left: 0;
@@ -69,6 +76,9 @@ body {
     -ms-transition: all 300ms ease;
     -o-transition: all 300ms ease;
   }
+
+  // .mouse-hover permet de binder un element au jQuery pour faire l'effet hover, logo, image, div...
+  // ex:
   .mouse-hover {
     position: absolute;
     background: red;
@@ -78,7 +88,14 @@ body {
     right: 20px;
     border-radius: 20px;
   }
-  .block-fullscreen .content {
+
+  // cette div pointé par la class ne s'affiche pas durant l'affichage mozaique
+  .content-fullsize {
     color: white;
+  }
+
+  // cette div pointé par la class ne s'affiche pas durant le fullscreen
+  .content {
+    color: orange;
   }
 }
