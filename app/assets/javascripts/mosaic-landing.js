@@ -1,9 +1,16 @@
 $(document).ready(function() {
-  $('.mosaic .mouse-hover').hover(function() {
-    $('.mosaic .block-fullscreen').html($(this).parent().parent().parent().html());
-    $('.mosaic .block-fullscreen').find('.content').remove();
+
+  function changeBlockFullScreen($this) {
+    data = $this.parent().data('fullscreen');
+    $('.mosaic .block-fullscreen').css('background', "url('" + data.background + "') no-repeat center fixed");
+    $('.mosaic .block-fullscreen').css('background-size', 'cover');
+    $('.mosaic .block-fullscreen .title').text(data.title);
     $('.mosaic .block').css('opacity', '0');
-    $(this).parent().parent().parent().css('opacity', '1');
+  }
+
+  $('.mosaic .mouse-hover').hover(function() {
+    changeBlockFullScreen($(this));
+    $(this).closest('.block').css('opacity', '1');
   }, function() {
     $('.mosaic .block').css('opacity', '1');
   });
